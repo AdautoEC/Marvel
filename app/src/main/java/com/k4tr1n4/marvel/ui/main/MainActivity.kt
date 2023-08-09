@@ -1,6 +1,7 @@
-package com.k4tr1n4.marvel
+package com.k4tr1n4.marvel.ui.main
 
 import android.os.Bundle
+import com.k4tr1n4.marvel.R
 import com.k4tr1n4.marvel.databinding.ActivityMainBinding
 import com.skydoves.bindables.BindingActivity
 
