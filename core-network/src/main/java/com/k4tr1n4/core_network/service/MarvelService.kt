@@ -1,5 +1,6 @@
 package com.k4tr1n4.core_network.service
 
+import com.k4tr1n4.core_network.model.MarvelResponse
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -11,7 +12,7 @@ interface MarvelService {
     suspend fun fetchMarvelList(
         @Query("limit") limit: Int = 20,
         @Query("offset") offset: Int = 0
-    ): ApiResponse<String>
+    ): ApiResponse<MarvelResponse>
 
     @GET("/v1/public/characters")
     suspend fun fetchMarvelInfo(

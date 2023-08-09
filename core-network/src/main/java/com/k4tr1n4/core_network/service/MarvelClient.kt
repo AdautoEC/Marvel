@@ -1,5 +1,6 @@
 package com.k4tr1n4.core_network.service
 
+import com.k4tr1n4.core_network.model.MarvelResponse
 import com.skydoves.sandwich.ApiResponse
 import javax.inject.Inject
 
@@ -8,7 +9,7 @@ class MarvelClient @Inject constructor(
 ) {
     suspend fun fetchMarvelList(
         page: Int
-    ): ApiResponse<String> = marvelService.fetchMarvelList(
+    ): ApiResponse<MarvelResponse> = marvelService.fetchMarvelList(
         limit = PAGING_SIZE,
         offset = page * PAGING_SIZE
     )
