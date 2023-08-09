@@ -7,12 +7,13 @@ plugins {
 
 android {
     namespace = "com.k4tr1n4.marvel"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.k4tr1n4.marvel"
         minSdk = 24
-        targetSdk = 34
+        //noinspection OldTargetApi
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -63,5 +64,7 @@ dependencies {
     //hilt
     implementation("com.google.dagger:hilt-android:2.47")
     kapt("com.google.dagger:hilt-compiler:2.47")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.47")
+    kaptAndroidTest("com.google.dagger:hilt-compiler:2.47")
 
 }
