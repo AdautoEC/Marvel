@@ -1,7 +1,7 @@
-package com.k4tr1n4.core_network.di
+package com.k4tr1n4.core.network.di
 
-import com.k4tr1n4.core_network.Dispatcher
-import com.k4tr1n4.core_network.MarvelAppDispatchers
+import com.k4tr1n4.core.network.Dispatcher
+import com.k4tr1n4.core.network.MarvelAppDispatchers
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

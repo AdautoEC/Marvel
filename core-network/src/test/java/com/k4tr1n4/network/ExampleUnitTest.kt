@@ -1,4 +1,4 @@
-package com.k4tr1n4.core_network
+package com.k4tr1n4.core.network
 
 import org.junit.Test
 

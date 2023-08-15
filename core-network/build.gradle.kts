@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -38,6 +39,8 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    implementation(project(mapOf("path" to ":core-model")))
+
     //coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")
@@ -54,5 +57,9 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.11.0")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+    //json parsing
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
 
 }

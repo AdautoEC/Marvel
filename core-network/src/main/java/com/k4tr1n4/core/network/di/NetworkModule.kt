@@ -1,8 +1,9 @@
-package com.k4tr1n4.core_network.di
+package com.k4tr1n4.core.network.di
 
 import com.k4tr1n4.core_network.BuildConfig
-import com.k4tr1n4.core_network.interceptor.HttpRequestInterceptor
-import com.k4tr1n4.core_network.service.MarvelService
+import com.k4tr1n4.core.network.interceptor.HttpRequestInterceptor
+import com.k4tr1n4.core.network.service.MarvelClient
+import com.k4tr1n4.core.network.service.MarvelService
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -42,5 +43,9 @@ internal object NetworkModule {
         return retrofit.create(MarvelService::class.java)
     }
 
-
+    @Provides
+    @Singleton
+    fun provideMarvelClient(marvelService: MarvelService): MarvelClient{
+        return MarvelClient(marvelService)
+    }
 }

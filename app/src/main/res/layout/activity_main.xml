@@ -7,6 +7,10 @@
         <variable
             name="vm"
             type="com.k4tr1n4.marvel.ui.main.MainViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.k4tr1n4.marvel.ui.main.MarvelAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,15 +18,25 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.toastMessage}"
-            app:layout_constraintEnd_toEndOf="parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fadeScrollbars="false"
+            android:padding="8dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            android:adapter="@{adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Mensagem que eu ainda vou mudar!!!"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:submitList="@{vm.marvelList}"
+            app:paginationPokemonList="@{vm}"
+            app:toast="@{vm.toastMessage}"
+            tools:listitem="@layout/item_marvel"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

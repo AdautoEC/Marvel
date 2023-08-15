@@ -1,6 +1,6 @@
-package com.k4tr1n4.core_network.model.mapper
+package com.k4tr1n4.core.network.model.mapper
 
-import com.k4tr1n4.core_network.model.MarvelErrorResponse
+import com.k4tr1n4.core.network.model.MarvelErrorResponse
 import com.skydoves.sandwich.ApiErrorModelMapper
 import com.skydoves.sandwich.ApiResponse
 import com.skydoves.sandwich.message

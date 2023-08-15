@@ -1,4 +1,4 @@
-package com.k4tr1n4.core_network.utils
+package com.k4tr1n4.core.network.utils
 
 import java.math.BigInteger
 import java.security.MessageDigest

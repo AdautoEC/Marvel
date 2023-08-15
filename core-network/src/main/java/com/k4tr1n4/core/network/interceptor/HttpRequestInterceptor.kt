@@ -1,8 +1,8 @@
-package com.k4tr1n4.core_network.interceptor
+package com.k4tr1n4.core.network.interceptor
 
 import android.util.Log
 import com.k4tr1n4.core_network.BuildConfig
-import com.k4tr1n4.core_network.utils.md5
+import com.k4tr1n4.core.network.utils.md5
 import okhttp3.Interceptor
 import okhttp3.Response
 

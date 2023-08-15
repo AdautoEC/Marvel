@@ -1,4 +1,4 @@
-package com.k4tr1n4.core_network
+package com.k4tr1n4.core.network
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,9 +1,11 @@
 package com.k4tr1n4.marvel.ui.main
 
 import android.util.Log
+import androidx.annotation.MainThread
 import androidx.databinding.Bindable
 import androidx.lifecycle.viewModelScope
 import com.k4tr1n4.core.data.repository.MainRepository
+import com.k4tr1n4.core.model.Character
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import com.skydoves.bindables.bindingProperty
@@ -24,7 +26,6 @@ class MainViewModel @Inject constructor(
     var toastMessage: String? by bindingProperty(null)
 
     private val marvelFetchIndex: MutableStateFlow<Int> = MutableStateFlow(0)
-
     private val marvelListFlow = marvelFetchIndex.flatMapLatest { page ->
         mainRepository.fetchMarvelList(
             page = page,
@@ -35,9 +36,16 @@ class MainViewModel @Inject constructor(
     }
 
     @get:Bindable
-    val marvelList: List<String> by marvelListFlow.asBindingProperty(viewModelScope, emptyList())
+    val marvelList: List<Character>? by marvelListFlow.asBindingProperty(viewModelScope, emptyList())
 
     init{
         Log.d("Init", "Iniciando mainViewModel")
+    }
+
+    @MainThread
+    fun fetchNextMarvelList() {
+        if (!isLoading) {
+            marvelFetchIndex.value++
+        }
     }
 }

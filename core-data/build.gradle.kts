@@ -42,6 +42,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation(project(mapOf("path" to ":core-network")))
+    implementation(project(mapOf("path" to ":core-model")))
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.47")
@@ -51,5 +52,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+
+    //network
+    implementation("com.github.skydoves:sandwich:1.3.7")
 
 }
