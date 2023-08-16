@@ -43,6 +43,7 @@ dependencies {
 
     implementation(project(mapOf("path" to ":core-network")))
     implementation(project(mapOf("path" to ":core-model")))
+    implementation(project(mapOf("path" to ":core-database")))
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.47")

@@ -24,7 +24,7 @@ series (SeriesList, optional): A resource list of series in which this character
 data class Character(
     var page: Int = 0,
     @field:Json(name = "id") val id: Int?,
-    @field:Json(name = "name") val name: String?,
+    @field:Json(name = "name") val name: String,
     @field:Json(name = "description") val description: String?,
     @field:Json(name = "modified") val modified: String?,
     @field:Json(name = "resourceURI") val resourceURI: String?

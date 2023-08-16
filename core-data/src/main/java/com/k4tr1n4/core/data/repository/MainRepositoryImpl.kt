@@ -1,6 +1,9 @@
 package com.k4tr1n4.core.data.repository
 
 import android.util.Log
+import com.k4tr1n4.core.database.CharacterDao
+import com.k4tr1n4.core.database.entity.mapper.asDomain
+import com.k4tr1n4.core.database.entity.mapper.asEntity
 import com.k4tr1n4.core.network.Dispatcher
 import com.k4tr1n4.core.network.MarvelAppDispatchers
 import com.k4tr1n4.core.network.service.MarvelClient
@@ -16,6 +19,7 @@ import javax.inject.Inject
 
 class MainRepositoryImpl @Inject constructor(
     private val marvelClient: MarvelClient,
+    private val marvelDao: CharacterDao,
     @Dispatcher(MarvelAppDispatchers.IO) private val ioDispatcher: CoroutineDispatcher
 ): MainRepository {
     override fun fetchMarvelList(
@@ -24,13 +28,19 @@ class MainRepositoryImpl @Inject constructor(
         onComplete: () -> Unit,
         onError: (String?) -> Unit
     ) = flow {
-        val response = marvelClient.fetchMarvelList(page = page)
-        response.suspendOnSuccess {
-            val characters = data.data.results
-            characters.forEach { character -> character.page = page}
-            emit(characters)
-        }.onFailure {
-            onError(message())
+        var characters = marvelDao.getCharacterList(page).asDomain()
+        if(characters.isEmpty()){
+            val response = marvelClient.fetchMarvelList(page = page)
+            response.suspendOnSuccess {
+                characters = data.data.results
+                characters.forEach { character -> character.page = page}
+                marvelDao.insertCharacterList(characters.asEntity())
+                emit(marvelDao.getAllCharacterList(page).asDomain())
+            }.onFailure {
+                onError(message())
+            }
+        } else{
+            emit(marvelDao.getAllCharacterList(page).asDomain())
         }
     }
         .onStart { onStart() }
