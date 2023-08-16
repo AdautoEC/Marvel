@@ -10,58 +10,49 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{character.idString}"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text = "IDzinho"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{character.name}"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/id"
-            app:layout_constraintTop_toBottomOf="@+id/id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text = "Namezinho"/>
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{character.idString}"
+            android:gravity="end"
+            app:layout_constraintStart_toEndOf="@+id/name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text = "IDzinho"/>
+
+        <!--<androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{character.description}"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintStart_toStartOf="@+id/id"
             app:layout_constraintTop_toBottomOf="@+id/name"
-            tools:text = "Descriptionzinha na moral"/>
+            tools:text = "Descriptionzinha na moral"/>-->
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/modified"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/description"
-            app:layout_constraintTop_toBottomOf="@+id/description"
+            android:text="@{character.formatModified}"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name"
             tools:text = "00/00/0000"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/uri"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{character.resourceURI}"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/modified"
-            app:layout_constraintTop_toBottomOf="@+id/modified"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text = "resourUIRizinhaaaa"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

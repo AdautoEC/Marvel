@@ -1,10 +1,10 @@
 package com.k4tr1n4.core.model
 
 import android.os.Parcelable
+import com.k4tr1n4.core.model.utils.formatDate
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
-import java.util.Date
 
 /*
 *id (int, optional): The unique ID of the character resource.,
@@ -31,5 +31,5 @@ data class Character(
 ) : Parcelable {
     fun getIdString(): String = String.format("#%03d", id)
 
-    //fun getModifiedString(): String? = modified?.let { String.format("%d", it.time) }
+    fun getFormatModified(): String? = modified?.formatDate()
 }

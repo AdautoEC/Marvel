@@ -9,5 +9,5 @@ data class FetchAllResponse(
     @field:Json(name = "limit") val limit: Int?,
     @field:Json(name = "total") val total: Int?,
     @field:Json(name = "count") val count: Int?,
-    @field:Json(name = "results") val results: List<Character>?
+    @field:Json(name = "results") val results: List<Character>
 )

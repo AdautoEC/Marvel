@@ -26,10 +26,8 @@ class MainRepositoryImpl @Inject constructor(
     ) = flow {
         val response = marvelClient.fetchMarvelList(page = page)
         response.suspendOnSuccess {
-            Log.d("Count", "teste")
             val characters = data.data.results
-            Log.d("Count", data.etag.toString())
-            characters?.forEach { character -> character.page = page}
+            characters.forEach { character -> character.page = page}
             emit(characters)
         }.onFailure {
             onError(message())

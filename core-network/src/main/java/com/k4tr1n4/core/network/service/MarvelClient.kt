@@ -22,6 +22,6 @@ class MarvelClient @Inject constructor(
     )
 
     companion object {
-        private const val PAGING_SIZE = 20
+        private const val PAGING_SIZE = 40
     }
 }
