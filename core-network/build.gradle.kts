@@ -42,9 +42,9 @@ dependencies {
     implementation(project(mapOf("path" to ":core-model")))
 
     //coroutine
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2")
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.47")
