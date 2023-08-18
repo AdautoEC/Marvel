@@ -36,6 +36,7 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":core-model")))
+    testImplementation(project(mapOf("path" to ":core-test")))
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.47")
@@ -56,4 +57,9 @@ dependencies {
     implementation("androidx.room:room-ktx:2.5.2")
     ksp("androidx.room:room-compiler:2.5.2")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+    //unit test
+    testImplementation("androidx.test:core:1.5.0")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.10")
 }
