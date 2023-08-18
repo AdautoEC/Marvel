@@ -21,7 +21,6 @@ internal class HttpRequestInterceptor : Interceptor {
             .build()
 
         val request = originalRequest.newBuilder().url(httpUrl).build()
-        Log.d("Request", request.toString())
         return chain.proceed(request)
     }
 
