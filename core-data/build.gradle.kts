@@ -34,16 +34,10 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
+    api(project(mapOf("path" to ":core-model")))
     implementation(project(mapOf("path" to ":core-network")))
-    implementation(project(mapOf("path" to ":core-model")))
     implementation(project(mapOf("path" to ":core-database")))
+    implementation(project(mapOf("path" to ":core-test")))
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.47")
@@ -56,5 +50,12 @@ dependencies {
 
     //network
     implementation("com.github.skydoves:sandwich:1.3.7")
+
+    //unit test
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("app.cash.turbine:turbine:0.13.0")
+    testImplementation("androidx.test:core:1.5.0")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    testImplementation("org.mockito:mockito-inline:3.12.4")
 
 }

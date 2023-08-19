@@ -67,11 +67,13 @@ abstract class ApiAbstract<T> {
     fun createService(clazz: Class<T>): T {
         return Retrofit.Builder()
             .client(client())
-            .baseUrl(BuildConfig.MARVEL_BASE_URL)
+            .baseUrl(mockWebServer.url("/"))
             .addConverterFactory(
                 MoshiConverterFactory.create()
             ).addCallAdapterFactory(
-                ApiResponseCallAdapterFactory.create()
+                ApiResponseCallAdapterFactory.create(
+                    coroutineScope = coroutinesRule.testScope
+                )
             ).build()
             .create(clazz)
     }

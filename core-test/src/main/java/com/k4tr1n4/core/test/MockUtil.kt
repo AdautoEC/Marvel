@@ -1,15 +1,9 @@
 package com.k4tr1n4.core.test
 
 import com.k4tr1n4.core.model.Character
+import com.k4tr1n4.core.model.FetchAllResponse
 
 object MockUtil {
-    /*
-    *  var page: Int = 0,
-    @field:Json(name = "id") val id: Int?,
-    @field:Json(name = "name") val name: String,
-    @field:Json(name = "description") val description: String?,
-    @field:Json(name = "modified") val modified: String?,
-    @field:Json(name = "resourceURI") val resourceURI: String?*/
     fun mockCharacter() = Character(
         page = 0,
         id = 1011334,
@@ -20,4 +14,12 @@ object MockUtil {
     )
 
     fun mockCharacterList() = listOf(mockCharacter())
+
+    fun mockFetchAllResponse() = FetchAllResponse(
+        offset = 0,
+        limit = 20,
+        total = 1562,
+        count = 20,
+        results = mockCharacterList()
+    )
 }

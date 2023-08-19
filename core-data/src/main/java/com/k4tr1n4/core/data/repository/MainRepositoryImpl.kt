@@ -1,6 +1,8 @@
 package com.k4tr1n4.core.data.repository
 
 import android.util.Log
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.WorkerThread
 import com.k4tr1n4.core.database.CharacterDao
 import com.k4tr1n4.core.database.entity.mapper.asDomain
 import com.k4tr1n4.core.database.entity.mapper.asEntity
@@ -8,7 +10,11 @@ import com.k4tr1n4.core.network.Dispatcher
 import com.k4tr1n4.core.network.MarvelAppDispatchers
 import com.k4tr1n4.core.network.service.MarvelClient
 import com.skydoves.sandwich.message
+import com.skydoves.sandwich.onError
 import com.skydoves.sandwich.onFailure
+import com.skydoves.sandwich.suspendOnError
+import com.skydoves.sandwich.suspendOnException
+import com.skydoves.sandwich.suspendOnFailure
 import com.skydoves.sandwich.suspendOnSuccess
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
@@ -17,11 +23,14 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
+@VisibleForTesting
 class MainRepositoryImpl @Inject constructor(
     private val marvelClient: MarvelClient,
     private val marvelDao: CharacterDao,
     @Dispatcher(MarvelAppDispatchers.IO) private val ioDispatcher: CoroutineDispatcher
 ): MainRepository {
+
+    @WorkerThread
     override fun fetchMarvelList(
         page: Int,
         onStart: () -> Unit,

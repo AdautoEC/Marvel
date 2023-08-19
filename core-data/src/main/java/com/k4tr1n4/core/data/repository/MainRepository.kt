@@ -12,5 +12,5 @@ interface MainRepository {
         onStart: () -> Unit,
         onComplete: () -> Unit,
         onError: (String?) -> Unit
-    ): Flow<List<Character>?>
+    ): Flow<List<Character>>
 }
