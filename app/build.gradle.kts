@@ -47,6 +47,11 @@ kapt {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":core-data")))
+    testImplementation(project(mapOf("path" to ":core-network")))
+    testImplementation(project(mapOf("path" to ":core-database")))
+    testImplementation(project(mapOf("path" to ":core-test")))
+    androidTestImplementation(project(mapOf("path" to ":core-test")))
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.activity:activity-ktx:1.7.2")
@@ -55,12 +60,6 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.material:material:1.9.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    implementation(project(mapOf("path" to ":core-data")))
-    implementation(project(mapOf("path" to ":core-model")))
 
     //binding
     implementation("com.github.skydoves:bindables:1.1.0")
@@ -76,5 +75,17 @@ dependencies {
 
     //whatif
     implementation("com.github.skydoves:whatif:1.1.2")
+
+    //unit test
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("app.cash.turbine:turbine:0.13.0")
+    testImplementation("androidx.test:core:1.5.0")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    testImplementation("org.mockito:mockito-inline:3.12.4")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2")
+    androidTestImplementation("com.google.truth:truth:1.1.3")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("com.android.support.test:runner:1.3.0-beta01")
 
 }

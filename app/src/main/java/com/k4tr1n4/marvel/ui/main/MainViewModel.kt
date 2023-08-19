@@ -26,6 +26,7 @@ class MainViewModel @Inject constructor(
     var toastMessage: String? by bindingProperty(null)
 
     private val marvelFetchIndex: MutableStateFlow<Int> = MutableStateFlow(0)
+    @OptIn(ExperimentalCoroutinesApi::class)
     private val marvelListFlow = marvelFetchIndex.flatMapLatest { page ->
         mainRepository.fetchMarvelList(
             page = page,
@@ -36,11 +37,7 @@ class MainViewModel @Inject constructor(
     }
 
     @get:Bindable
-    val marvelList: List<Character>? by marvelListFlow.asBindingProperty(viewModelScope, emptyList())
-
-    init{
-        Log.d("Init", "Iniciando mainViewModel")
-    }
+    val marvelList: List<Character> by marvelListFlow.asBindingProperty(viewModelScope, emptyList())
 
     @MainThread
     fun fetchNextMarvelList() {

@@ -70,7 +70,7 @@ class MainRepositoryImplTest {
             onComplete = {},
             onError = {}
         ).test(2.toDuration(DurationUnit.SECONDS)) {
-            val exceptItem = expectMostRecentItem()[0]
+            val exceptItem = awaitItem()[0]
             assertEquals(exceptItem.id, 1011334)
             assertEquals(exceptItem.name, "3-D Man")
             assertEquals(exceptItem.description, "")
