@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.k4tr1n4.marvel.AppTestRunner"
     }
 
     buildTypes {
@@ -32,6 +32,23 @@ android {
     buildFeatures{
         dataBinding = true
         viewBinding = true
+    }
+
+    hilt {
+        enableAggregatingTask = true
+    }
+
+    kotlin {
+        sourceSets.configureEach {
+            kotlin.srcDir("$buildDir/generated/ksp/$name/kotlin/")
+        }
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+            isReturnDefaultValues = true
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -86,6 +103,6 @@ dependencies {
     androidTestImplementation("com.google.truth:truth:1.1.3")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("com.android.support.test:runner:1.3.0-beta01")
+    androidTestImplementation("com.android.support.test:runner:1.0.2")
 
 }
